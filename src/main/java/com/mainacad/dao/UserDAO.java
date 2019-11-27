@@ -89,7 +89,7 @@ public class UserDAO {
                         resultSet.getString("password"),
                         resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
-                        resultSet.getString("email"),
+                        resultSet.getString("e_mail"),
                         resultSet.getString("phone")
                 );
                 return user;
@@ -117,7 +117,7 @@ public class UserDAO {
                   resultSet.getString("password"),
                   resultSet.getString("first_name"),
                   resultSet.getString("last_name"),
-                  resultSet.getString("email"),
+                  resultSet.getString("e_mail"),
                   resultSet.getString("phone")
                 );
                 return user;
@@ -146,7 +146,7 @@ public class UserDAO {
             preparedStatement.setString(4, user.getLastName());
             preparedStatement.setString(5, user.getEmail());
             preparedStatement.setString(6, user.getPhone());
-            preparedStatement.setInt(6, user.getId());
+            preparedStatement.setInt(7, user.getId());
 
             int result = preparedStatement.executeUpdate();
             if (result == 1) {
