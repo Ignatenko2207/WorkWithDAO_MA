@@ -1,6 +1,8 @@
 package com.mainacad.dao;
 
+import com.mainacad.dao.model.ItemDTO;
 import com.mainacad.model.Item;
+import com.mainacad.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,6 +70,18 @@ public class ItemDAO {
             e.printStackTrace();
         }
         return items;
+    }
+
+    public static List<ItemDTO> getAllByUserAndPeriod(User user, long timeFrom, long timeTo) {
+        String sql = "SELECT i.id AS itemId, name, price FROM items i " +
+                "JOIN orders o ON o.item_id = i.id " +
+                "JOIN carts c ON c.id = o.cart_id " +
+                "WHERE c.user_id = ? " +
+                "AND c.creation_time >= ? " +
+                "AND c.creation_time <= ? " +
+                "AND c.status = 2";
+
+        return null;
     }
 
     public static List<Item> getAllAvailable() {
